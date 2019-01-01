@@ -10,6 +10,7 @@ namespace app\lib\exception;
 
 
 use think\Exception;
+use Throwable;
 
 class BaseException extends Exception {
     // HTTP状态码
@@ -18,4 +19,17 @@ class BaseException extends Exception {
     public $msg = 'parameter error';
     // 错误码
     public $errorCode = 10000;
+
+
+    /**
+     * BaseException constructor.
+     * @param array $param
+     * @throws Exception
+     */
+    public function __construct($param = []) {
+        if (!is_array($param)) {
+            throw new Exception('参数必须是数组');
+        }
+
+    }
 }

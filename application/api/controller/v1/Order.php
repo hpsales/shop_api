@@ -26,7 +26,7 @@ class Order {
      */
     public function user(){
         //(new IDMustBePositiveInt()) -> goCheck();
-        throw new BannerMissException();
+        (new IDMustBePositiveInt()) -> goCheck();
         //throw new BannerMissException();
     }
 }
