@@ -23,13 +23,22 @@ class BaseException extends Exception {
 
     /**
      * BaseException constructor.
-     * @param array $param
+     * @param array $params
      * @throws Exception
      */
-    public function __construct($param = []) {
-        if (!is_array($param)) {
+    public function __construct($params = []) {
+        if (!is_array($params)) {
+            // 判断是不是数组，如果不是，抛出异常
             throw new Exception('参数必须是数组');
         }
-
+        if(array_key_exists('code',$params)){
+            $this -> code = $params['code'];
+        }
+        if(array_key_exists('msg',$params)){
+            $this -> msg = $params['msg'];
+        }
+        if(array_key_exists('errorCode',$params)){
+            $this -> errorCode = $params['errorCode'];
+        }
     }
 }
