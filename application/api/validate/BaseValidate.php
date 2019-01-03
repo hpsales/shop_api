@@ -24,13 +24,13 @@ class BaseValidate extends Validate {
     function goCheck(){
         $params = Request::instance() ->param();
 
-        $result = $this -> check($params);
+        $result = $this ->batch() ->check($params);
         if(!$result){
             /*$error = $this -> error;
             throw new ParameterException($error);*/
-            $e = new ParameterException();
-            $e -> msg = $this -> error;
-            throw $e;
+            throw new ParameterException([
+                'msg' => $this -> error,
+            ]);
         }else{
             return true;
         }
